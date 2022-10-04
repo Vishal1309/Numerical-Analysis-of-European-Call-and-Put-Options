@@ -1,0 +1,12 @@
+function [v,s,t]=fh(u,x,tau,T)
+% [v,s,t]=fh(u,x,tau,T) is converted from heat variables to financial variables. 
+% v, x, s, u may all be vectors (of compatible sizes).
+% It is presumed that sigma and r are already defined as
+%global variables.
+global sigma r
+mu=(sigma/2 - r/sigma)/sqrt(2);
+nu=r+mu^2;
+t=T-tau;
+s=exp(sigma*x/sqrt(2));
+v=exp(mu*x-nu*tau).*u;
+end
